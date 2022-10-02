@@ -9,7 +9,7 @@ namespace AI.FSM {
 
         public override void OnStateStay(FSMBase fsm) {
             base.OnStateStay(fsm);
-            Sonar sonar = fsm as Sonar;
+            SonarFSM sonar = fsm as SonarFSM;
             // rotate sonar to face mouse position
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             sonar.transform.up = mousePos - (Vector2)sonar.transform.position;
@@ -17,7 +17,7 @@ namespace AI.FSM {
 
         public override void OnStateExit(FSMBase fsm) {
             base.OnStateExit(fsm);
-            Sonar sonar = fsm as Sonar;
+            SonarFSM sonar = fsm as SonarFSM;
             sonar.sonarTarget = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }

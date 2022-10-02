@@ -1,7 +1,7 @@
 using UnityEngine;
 using AI.FSM;
 
-public class Sonar : FSMBase {
+public class SonarFSM : FSMBase {
     public float DurationSeconds = 10f;
     public float ColdDownSeconds = 10f;
     public float SpreadSpeed = 1f;
