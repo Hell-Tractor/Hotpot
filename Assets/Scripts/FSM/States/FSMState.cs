@@ -42,6 +42,7 @@ public abstract class FSMState {
     public void Reason(FSMBase fsm) {
         foreach (FSMTrigger i in _triggers) {
             if (fsm.HasTrigger(i.TriggerID) || i.HandleTrigger(fsm)) {
+                fsm.ResetTrigger(i.TriggerID);
                 fsm.changeActiveState(_map[i.TriggerID]);
                 return;
             }
