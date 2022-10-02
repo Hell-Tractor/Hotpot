@@ -74,7 +74,7 @@ public class Field : MonoBehaviour {
                     Bounds.height / VerticalCount
                 );
                 Gizmos.color = new Color(0.5f, 0.5f, 1.0f);
-                Gizmos.DrawLine(gridBounds.center, gridBounds.center + gridEdit.Grid.Force / 10f);
+                Gizmos.DrawLine(gridBounds.center, gridBounds.center + gridEdit.Grid.Force / 3f);
             }
         }
     }
