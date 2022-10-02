@@ -5,7 +5,7 @@ public class FoodBehaviour : MonoBehaviour
     public float DurationSeconds = 10f;
     private float _remainTime;
     public AnimationCurve AlphaCurve;
-    public Vector2 Speed;
+    public Vector2 InitialSpeed;
     private Rigidbody2D _rigidbody2D;
 
     // Start is called before the first frame update
@@ -13,7 +13,7 @@ public class FoodBehaviour : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _remainTime = DurationSeconds;
-        _rigidbody2D.velocity = Speed;
+        _rigidbody2D.velocity = InitialSpeed;
     }
 
     // Update is called once per frame
@@ -26,5 +26,9 @@ public class FoodBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void OnSonarDetected() {
+        
     }
 }
