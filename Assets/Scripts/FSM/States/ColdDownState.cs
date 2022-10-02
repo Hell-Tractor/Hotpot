@@ -9,7 +9,7 @@ namespace AI.FSM {
         }
         public override void OnStateEnter(FSMBase fsm) {
             base.OnStateEnter(fsm);
-            _coldDownSeconds = (fsm as Sonar).ColdDownSeconds;
+            _coldDownSeconds = (fsm as SonarFSM).ColdDownSeconds;
         }
         public override void OnStateStay(FSMBase fsm) {
             base.OnStateStay(fsm);
