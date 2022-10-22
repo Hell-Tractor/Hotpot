@@ -1,17 +1,20 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class FoodBehaviour : MonoBehaviour
 {
     public float DurationSeconds = 10f;
     private float _remainTime;
     public AnimationCurve AlphaCurve;
-    public Vector2 InitialSpeed;
+    public float Speed;
+    public float MaxAngularSpeed;
     public float SpeedUpdateInterval;
     public float SpeedUpdateDuration;
     private float _speedUpdateRemainTime;
     private Rigidbody2D _rigidbody2D;
     private SpeedState _currentSpeedState;
     private Vector2 _targetSpeed;
+    private Vector2 _speedBeforeUpdate;
 
     private enum SpeedState {
         Stable,
@@ -23,7 +26,9 @@ public class FoodBehaviour : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _remainTime = DurationSeconds;
-        _rigidbody2D.velocity = InitialSpeed;
+        _rigidbody2D.velocity = (new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f))).normalized * Speed;
+        _rigidbody2D.angularVelocity = Random.Range(-MaxAngularSpeed, MaxAngularSpeed);
+        Debug.Log(name + " speed: " + _rigidbody2D.velocity);
         _speedUpdateRemainTime = SpeedUpdateInterval;
         _currentSpeedState = SpeedState.Stable;
     }
@@ -45,7 +50,8 @@ public class FoodBehaviour : MonoBehaviour
                 _currentSpeedState = SpeedState.Altering;
                 _speedUpdateRemainTime = SpeedUpdateDuration;
                 _targetSpeed = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-                _targetSpeed = _targetSpeed.normalized * InitialSpeed.magnitude;
+                _targetSpeed = _targetSpeed.normalized * Speed;
+                _speedBeforeUpdate = _rigidbody2D.velocity;
             }
         } else if (_currentSpeedState == SpeedState.Altering) {
             _speedUpdateRemainTime -= Time.deltaTime;
@@ -54,7 +60,7 @@ public class FoodBehaviour : MonoBehaviour
                 _speedUpdateRemainTime = SpeedUpdateInterval;
             } else {
                 float t = 1 - _speedUpdateRemainTime / SpeedUpdateDuration;
-                _rigidbody2D.velocity = Vector2.Lerp(InitialSpeed, _targetSpeed, t);
+                _rigidbody2D.velocity = Vector2.Lerp(_speedBeforeUpdate, _targetSpeed, t);
             }
         }
     }
