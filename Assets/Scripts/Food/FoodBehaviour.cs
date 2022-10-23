@@ -10,6 +10,7 @@ public class FoodBehaviour : MonoBehaviour
     public float MaxAngularSpeed;
     public float SpeedUpdateInterval;
     public float SpeedUpdateDuration;
+    public GameObject PartPrefab;
     private float _speedUpdateRemainTime;
     private Rigidbody2D _rigidbody2D;
     private SpeedState _currentSpeedState;
