@@ -30,8 +30,9 @@ public class StageManager : MonoBehaviour {
                     },
                     food => {
                         if (food != null) {
-                            Chopsticks.GetComponent<BothChopstickBehaviour>().AddPart(food.GetComponent<FoodBehaviour>().PartPrefab);
-                            Destroy(food);
+                            Chopsticks.GetComponent<BothChopstickBehaviour>().AddPart(food);
+                            // Chopsticks.GetComponent<BothChopstickBehaviour>().AddPart(food.GetComponent<FoodBehaviour>().PartPrefab);
+                            // Destroy(food);
                         }
                     }
                 );
