@@ -18,9 +18,12 @@ public class ChopstickBehaviour : MonoBehaviour {
     }
 
     public void AddPart(GameObject partPrefab) {
-        GameObject part = Instantiate(partPrefab);
+        // GameObject part = Instantiate(partPrefab);
+        GameObject part = partPrefab;
+        Destroy(part.GetComponent<FoodBehaviour>());
         part.transform.parent = transform;
         part.transform.localPosition = _getNextPartPosition(part.transform.localScale.y);
+        part.transform.localRotation = Quaternion.identity;
         if (_lastPart != null) {
             float k = part.transform.localScale.x / _lastPart.transform.localScale.x;
             part.transform.localScale = new Vector3(_lastPart.transform.localScale.x, part.transform.localScale.y / k, 1);

@@ -32,7 +32,7 @@ public class StageManager : MonoBehaviour {
                         if (food != null) {
                             Chopsticks.GetComponent<BothChopstickBehaviour>().AddPart(food);
                             // Chopsticks.GetComponent<BothChopstickBehaviour>().AddPart(food.GetComponent<FoodBehaviour>().PartPrefab);
-                            Destroy(food);
+                            // Destroy(food);
                         }
                     }
                 );
