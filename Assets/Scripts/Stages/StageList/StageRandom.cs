@@ -16,7 +16,8 @@ public class StageRandom : StageBase {
         GameObject food = FoodPool.Instance.GetFood(foodName);
         GameObject foodInstance = GameObject.Instantiate(food, foodParent.transform);
         Vector2 randomScreenPoint = new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height));
-        foodInstance.transform.position = Camera.main.ScreenToWorldPoint(randomScreenPoint);
+        Vector2 worldpoint = Camera.main.ScreenToWorldPoint(randomScreenPoint);
+        foodInstance.transform.position = new Vector3(worldpoint.x, worldpoint.y, 0);
     }
 
     public override void OnStageEnd(StageManager stageManager, GameObject foodParent) {

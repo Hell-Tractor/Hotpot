@@ -46,7 +46,7 @@ public class FoodPool : MonoBehaviour {
     }
 
     private void _loadFoodNames() {
-        string path = Application.dataPath + "/Resources/Food";
+        string path = Application.dataPath + "/Resources/Food/";
         string[] files = System.IO.Directory.GetFiles(path, "*.prefab", System.IO.SearchOption.AllDirectories);
         _foodNames = files.Select(file => file.Replace(path, "").Replace(".prefab", "")).ToList();
     }
