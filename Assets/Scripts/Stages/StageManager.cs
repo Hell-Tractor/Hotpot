@@ -13,7 +13,7 @@ public class StageManager : MonoBehaviour {
 
     private void Update() {
         if (_currentStage != null) {
-            _currentStage.CheckStageState(this, FoodParent);
+            //_currentStage.CheckStageState(this, FoodParent);
             if (_currentStage.State == StageState.InProgress)
                 _currentStage.OnStageUpdate(this, FoodParent);
             else if (_currentStage.State == StageState.Completed || _currentStage.State == StageState.Failed) {
@@ -30,9 +30,8 @@ public class StageManager : MonoBehaviour {
                     },
                     food => {
                         if (food != null) {
-                            Chopsticks.GetComponent<BothChopstickBehaviour>().AddPart(food);
-                            // Chopsticks.GetComponent<BothChopstickBehaviour>().AddPart(food.GetComponent<FoodBehaviour>().PartPrefab);
-                            // Destroy(food);
+                            Chopsticks.GetComponent<BothChopstickBehaviour>().AddPart(food.GetComponent<FoodBehaviour>().PartPrefab);
+                            Destroy(food);
                         }
                     }
                 );

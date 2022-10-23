@@ -18,9 +18,7 @@ public class ChopstickBehaviour : MonoBehaviour {
     }
 
     public void AddPart(GameObject partPrefab) {
-        // GameObject part = Instantiate(partPrefab);
-        GameObject part = partPrefab;
-        Destroy(part.GetComponent<FoodBehaviour>());
+        GameObject part = Instantiate(partPrefab);
         part.transform.parent = transform;
         part.transform.localPosition = _getNextPartPosition(part.transform.localScale.y);
         part.transform.localRotation = Quaternion.identity;
@@ -30,7 +28,7 @@ public class ChopstickBehaviour : MonoBehaviour {
         }
         _lastPart = part;
         CurrentLength += part.GetComponent<ChopstickPartBehaviour>().Length;
-        _sumScaleY += part.transform.localScale.y;
+        _sumScaleY += part.GetComponent<SpriteRenderer>().bounds.size.y;
     }
 
     private Vector3 _getNextPartPosition(float nextLength) {
