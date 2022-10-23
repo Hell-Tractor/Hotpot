@@ -10,16 +10,17 @@ public class BothChopstickBehaviour : MonoBehaviour {
     public ChopstickBehaviour LeftChopstick;
     public ChopstickBehaviour RightChopstick;
 
-    public async void Fetch(Vector2 targetPosition, Action<GameObject> onFetch) {
+    public async void Fetch(Vector2 targetPosition, Action<GameObject> onFetch, Action<GameObject> onComplete) {
         transform.localPosition = new Vector3(targetPosition.x, transform.localPosition.y, transform.localPosition.z);
         float _sumScaleY = (LeftChopstick.GetSumScale() + RightChopstick.GetSumScale()) * 0.5f;
         targetPosition += new Vector2(0, _sumScaleY / 2);
         float t = 0;
+        GameObject food = null;
         while (t < FetchDuration) {
             t += Time.deltaTime;
             float y = FetchPositionCurve.Evaluate(t / FetchDuration) * targetPosition.y;
             if (y > transform.localPosition.y) {
-                GameObject food = Physics2D.OverlapCircleAll(targetPosition - new Vector2(0, _sumScaleY / 2), FetchCheckRadius)
+                food = Physics2D.OverlapCircleAll(targetPosition - new Vector2(0, _sumScaleY / 2), FetchCheckRadius)
                 .Where(c => c.CompareTag("Food"))
                 .OrderBy(collider => {
                     return Vector2.Distance(collider.transform.position, transform.position);
@@ -28,6 +29,19 @@ public class BothChopstickBehaviour : MonoBehaviour {
             }
             transform.localPosition = new Vector3(targetPosition.x, y, transform.localPosition.z);
             await Task.Yield();
+        }
+        onComplete(food);
+    }
+
+    public float GetChopstickBottom() {
+        return Mathf.Min(LeftChopstick.GetBottom(), RightChopstick.GetBottom());
+    }
+
+    public void AddPart(GameObject partPrefab) {
+        if (LeftChopstick.CurrentLength < RightChopstick.CurrentLength) {
+            LeftChopstick.AddPart(partPrefab);
+        } else {
+            RightChopstick.AddPart(partPrefab);
         }
     }
 }

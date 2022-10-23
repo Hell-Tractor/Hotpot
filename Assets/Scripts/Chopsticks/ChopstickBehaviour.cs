@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ChopstickBehaviour : MonoBehaviour {
@@ -34,5 +35,9 @@ public class ChopstickBehaviour : MonoBehaviour {
 
     public float GetSumScale() {
         return _sumScaleY;
+    }
+
+    public float GetBottom() {
+        return transform.position.y - _sumScaleY / 2;
     }
 }
