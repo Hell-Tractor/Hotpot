@@ -12,13 +12,14 @@ public class BothChopstickBehaviour : MonoBehaviour {
 
     public async void Fetch(Vector2 targetPosition, Action<GameObject> onFetch, Action<GameObject> onComplete) {
         transform.localPosition = new Vector3(targetPosition.x, transform.localPosition.y, transform.localPosition.z);
+        Vector3 startPosition = transform.localPosition;
         float _sumScaleY = (LeftChopstick.GetSumScale() + RightChopstick.GetSumScale()) * 0.5f;
         targetPosition += new Vector2(0, _sumScaleY / 2);
         float t = 0;
         GameObject food = null;
         while (t < FetchDuration) {
             t += Time.deltaTime;
-            float y = FetchPositionCurve.Evaluate(t / FetchDuration) * targetPosition.y;
+            float y = FetchPositionCurve.Evaluate(t / FetchDuration) * (targetPosition.y - startPosition.y);
             if (y > transform.localPosition.y) {
                 food = Physics2D.OverlapCircleAll(targetPosition - new Vector2(0, _sumScaleY / 2), FetchCheckRadius)
                 .Where(c => c.CompareTag("Food"))
