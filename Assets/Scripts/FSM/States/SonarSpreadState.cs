@@ -16,7 +16,8 @@ namespace AI.FSM {
             _elapsedTime = 0f;
             SonarFSM sonar = fsm as SonarFSM;
             Vector2 sonarDirection = sonar.sonarTarget - (Vector2)sonar.transform.position;
-
+            sonar.Wave.loop = true;
+            sonar.Wave.Play();
             _targetList = Physics2D.OverlapCircleAll(
                 sonar.transform.position,
                 sonar.SpreadSpeed * sonar.DurationSeconds,
@@ -36,6 +37,9 @@ namespace AI.FSM {
             }).ToList().ForEach(food => food.GetComponent<FoodBehaviour>().OnSonarDetected());
 
             _elapsedTime += Time.deltaTime;
+            if (sonar.Wave.main.loop && _elapsedTime >= sonar.LoopDuration) {
+                sonar.Wave.loop = false;
+            }
             if (_elapsedTime >= sonar.DurationSeconds) {
                 fsm.SetTrigger(FSMTriggerID.StateEnd);
             }
