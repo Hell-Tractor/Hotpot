@@ -21,12 +21,12 @@ public class ChopstickBehaviour : MonoBehaviour {
     public void AddPart(GameObject partPrefab) {
         GameObject part = Instantiate(partPrefab);
         part.transform.parent = transform;
-        part.transform.localPosition = _getNextPartPosition(part.GetComponent<SpriteRenderer>().bounds.size.y);
         part.transform.localRotation = Quaternion.identity;
         if (_lastPart != null) {
             float k = part.GetComponent<SpriteRenderer>().bounds.size.x / _lastPart.GetComponent<SpriteRenderer>().bounds.size.x;
             part.transform.localScale = new Vector3(part.transform.localScale.x / k, part.transform.localScale.y / k, 1);
         }
+        part.transform.localPosition = _getNextPartPosition(part.GetComponent<SpriteRenderer>().bounds.size.y);
         _lastPart = part;
         CurrentLength += part.GetComponent<ChopstickPartBehaviour>().Length;
         _sumScaleY += part.GetComponent<SpriteRenderer>().bounds.size.y;
