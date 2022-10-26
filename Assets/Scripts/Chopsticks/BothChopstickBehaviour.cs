@@ -26,6 +26,8 @@ public class BothChopstickBehaviour : MonoBehaviour {
     public async void Fetch(Vector2 targetPosition, Action<GameObject> onFetch, Action<GameObject> onComplete) {
         if (CurrentState == BothChopstickBehaviour.State.Fetching)
             return;
+        if (Sonar.GetComponent<SonarFSM>().CurrentState == AI.FSM.FSMStateID.SonarSpread)
+            return;
         CurrentState = BothChopstickBehaviour.State.Fetching;
         transform.localPosition = new Vector3(targetPosition.x, transform.localPosition.y, transform.localPosition.z);
         Vector3 startPosition = transform.localPosition;

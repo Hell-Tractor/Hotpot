@@ -177,6 +177,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 57174733531174256, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 57174733531174256, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 57174733531174256, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7006865749207744265, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -224,6 +236,18 @@ PrefabInstance:
     - target: {fileID: 7006865749207744270, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
       propertyPath: m_Name
       value: Chopsticks
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755096242203369950, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
+      propertyPath: Degree
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755096242203369950, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
+      propertyPath: SpreadSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755096242203369950, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
+      propertyPath: DurationSeconds
+      value: 4.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
