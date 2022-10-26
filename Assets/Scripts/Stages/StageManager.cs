@@ -10,7 +10,8 @@ public class StageManager : MonoBehaviour {
     private float? _lastLength = null;
 
     private void Start() {
-        this.LoadStage(StageToLoad);
+        if (StageToLoad.Length != 0)
+            this.LoadStage(StageToLoad);
     }
 
     private void Update() {
@@ -50,13 +51,13 @@ public class StageManager : MonoBehaviour {
         }
     }
 
-    public void LoadStage(string stage) {
+    public void LoadStage(string stage, params object[] args) {
         Type stageType = Type.GetType(stage);
         if (stageType == null) {
             Debug.LogError($"Stage {stage} not found");
             return;
         }
-        _currentStage = Activator.CreateInstance(stageType) as StageBase;
+        _currentStage = Activator.CreateInstance(stageType, args) as StageBase;
         _currentStage.OnStageStart(this, FoodParent);
     }
 }

@@ -1,7 +1,11 @@
 using UnityEngine;
 
 public class StageRandom : StageBase {
-    public const int InitialFoodCount = 10;
+    public int InitialFoodCount = 10;
+
+    public StageRandom(int initialFoodCount = 10) {
+        InitialFoodCount = initialFoodCount;
+    }
 
     public override void OnStageStart(StageManager stageManager, GameObject foodParent) {
         base.OnStageStart(stageManager, foodParent);
@@ -15,7 +19,7 @@ public class StageRandom : StageBase {
         string foodName = FoodPool.Instance.GetRandomFoodName();
         GameObject food = FoodPool.Instance.GetFood(foodName);
         GameObject foodInstance = GameObject.Instantiate(food, foodParent.transform);
-        Vector2 randomScreenPoint = new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height));
+        Vector2 randomScreenPoint = new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height * 0.4f));
         Vector2 worldpoint = Camera.main.ScreenToWorldPoint(randomScreenPoint);
         foodInstance.transform.position = new Vector3(worldpoint.x, worldpoint.y, 0);
     }
