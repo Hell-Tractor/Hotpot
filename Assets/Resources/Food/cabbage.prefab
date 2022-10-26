@@ -135,7 +135,7 @@ MonoBehaviour:
   MaxAngularSpeed: 60
   SpeedUpdateInterval: 3
   SpeedUpdateDuration: 0.5
-  PartPrefab: {fileID: 0}
+  PartPrefab: {fileID: 9085077380511245317, guid: fede8a966c2a6964a8c575951b34e100, type: 3}
 --- !u!50 &9085077380511245321
 Rigidbody2D:
   serializedVersion: 4
