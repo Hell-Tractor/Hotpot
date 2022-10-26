@@ -26,16 +26,18 @@ public class BothChopstickBehaviour : MonoBehaviour {
         targetPosition += new Vector2(0, _sumScaleY / 2f);
         float t = 0;
         GameObject food = null;
+        bool taked = false;
         while (t < FetchDuration) {
             t += Time.deltaTime;
             float y = FetchPositionCurve.Evaluate(t / FetchDuration) * (targetPosition.y - startPosition.y) + startPosition.y;
-            if (y > transform.localPosition.y) {
+            if (y > transform.localPosition.y && !taked) {
                 food = Physics2D.OverlapCircleAll(targetPosition - new Vector2(0, _sumScaleY / 2), FetchCheckRadius)
                 .Where(c => c.CompareTag("Food"))
                 .OrderBy(collider => {
                     return Vector2.Distance(collider.transform.position, transform.position);
                 }).FirstOrDefault()?.gameObject;
                 onFetch(food);
+                taked = true;
             }
             transform.localPosition = new Vector3(targetPosition.x, y, transform.localPosition.z);
             await Task.Yield();
