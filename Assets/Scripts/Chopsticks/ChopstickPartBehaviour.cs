@@ -1,9 +1,11 @@
 using UnityEngine;
 
 public class ChopstickPartBehaviour : MonoBehaviour {
-    public float Length {
-        get {
-            return GetComponent<SpriteRenderer>().bounds.size.y;
+    public float Length = -1;
+
+    private void Awake() {
+        if (Length == -1) {
+            Length = GetComponent<SpriteRenderer>().bounds.size.y;
         }
     }
 }

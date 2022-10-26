@@ -14,6 +14,7 @@ public class BothChopstickBehaviour : MonoBehaviour {
         Idle, Fetching
     }
     public State CurrentState { get; private set; } = BothChopstickBehaviour.State.Idle;
+    public float DeltaLength { get; private set; }
 
     public float CurrentLength {
         get {
@@ -28,7 +29,7 @@ public class BothChopstickBehaviour : MonoBehaviour {
         transform.localPosition = new Vector3(targetPosition.x, transform.localPosition.y, transform.localPosition.z);
         Vector3 startPosition = transform.localPosition;
         float _sumScaleY = (LeftChopstick.GetSumScale() + RightChopstick.GetSumScale()) * 0.5f;
-        Debug.Log(_sumScaleY);
+        // Debug.Log(_sumScaleY);
         targetPosition += new Vector2(0, _sumScaleY / 2f);
         float t = 0;
         GameObject food = null;
@@ -51,10 +52,6 @@ public class BothChopstickBehaviour : MonoBehaviour {
         transform.localPosition = startPosition;
         onComplete(food);
         CurrentState = BothChopstickBehaviour.State.Idle;
-    }
-
-    public float GetChopstickBottom() {
-        return Mathf.Min(LeftChopstick.GetBottom(), RightChopstick.GetBottom());
     }
 
     public void AddPart(GameObject partPrefab) {

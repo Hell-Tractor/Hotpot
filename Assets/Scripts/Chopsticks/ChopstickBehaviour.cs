@@ -21,11 +21,11 @@ public class ChopstickBehaviour : MonoBehaviour {
     public void AddPart(GameObject partPrefab) {
         GameObject part = Instantiate(partPrefab);
         part.transform.parent = transform;
-        part.transform.localPosition = _getNextPartPosition(part.transform.localScale.y);
+        part.transform.localPosition = _getNextPartPosition(part.GetComponent<SpriteRenderer>().bounds.size.y);
         part.transform.localRotation = Quaternion.identity;
         if (_lastPart != null) {
-            float k = part.transform.localScale.x / _lastPart.transform.localScale.x;
-            part.transform.localScale = new Vector3(_lastPart.transform.localScale.x, part.transform.localScale.y / k, 1);
+            float k = part.GetComponent<SpriteRenderer>().bounds.size.x / _lastPart.GetComponent<SpriteRenderer>().bounds.size.x;
+            part.transform.localScale = new Vector3(part.transform.localScale.x / k, part.transform.localScale.y / k, 1);
         }
         _lastPart = part;
         CurrentLength += part.GetComponent<ChopstickPartBehaviour>().Length;
@@ -36,7 +36,7 @@ public class ChopstickBehaviour : MonoBehaviour {
         if (_lastPart == null) {
             return new Vector3(0, 0, 0);
         }
-        return _lastPart.transform.localPosition - new Vector3(0, (_lastPart.transform.localScale.y + nextLength) * 0.5f, 0);
+        return _lastPart.transform.localPosition - new Vector3(0, (_lastPart.GetComponent<SpriteRenderer>().bounds.size.y + nextLength) * 0.5f, 0);
     }
 
     public float GetSumScale() {

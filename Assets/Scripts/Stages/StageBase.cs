@@ -16,7 +16,7 @@ public abstract class StageBase {
         stageManager.Chopsticks.SetActive(true);
     }
     public virtual void CheckStageState(StageManager stageManager, GameObject foodParent) {
-        if (State == StageState.InProgress && stageManager.Chopsticks.GetComponent<BothChopstickBehaviour>().GetChopstickBottom() < _bottomBound) {
+        if (State == StageState.InProgress && stageManager.Chopsticks.GetComponent<BothChopstickBehaviour>().CurrentLength > Screen.height) {
             State = StageState.Completed;
         }
         if (State == StageState.InProgress && foodParent.transform.childCount == 0) {

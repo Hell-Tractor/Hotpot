@@ -29,7 +29,7 @@ public class FoodBehaviour : MonoBehaviour
         _remainTime = DurationSeconds;
         _rigidbody2D.velocity = (new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f))).normalized * Speed;
         _rigidbody2D.angularVelocity = Random.Range(-MaxAngularSpeed, MaxAngularSpeed);
-        Debug.Log(name + " speed: " + _rigidbody2D.velocity);
+        // Debug.Log(name + " speed: " + _rigidbody2D.velocity);
         _speedUpdateRemainTime = SpeedUpdateInterval;
         _currentSpeedState = SpeedState.Stable;
     }

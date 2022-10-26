@@ -7,6 +7,7 @@ public class StageManager : MonoBehaviour {
     public GameObject Chopsticks;
     public MaskController Mask;
     private StageBase _currentStage = null;
+    private float? _lastLength = null;
 
     private void Start() {
         this.LoadStage(StageToLoad);
@@ -28,13 +29,20 @@ public class StageManager : MonoBehaviour {
                     food => {
                         if (food != null) {
                             food.SetActive(false);
-                            Mask.TargetY -= Chopsticks.GetComponent<BothChopstickBehaviour>().CurrentLength;
                         }
                     },
                     food => {
                         if (food != null) {
                             Chopsticks.GetComponent<BothChopstickBehaviour>().AddPart(food.GetComponent<FoodBehaviour>().PartPrefab);
                             Destroy(food);
+                            if (_lastLength == null) {
+                                _lastLength = Chopsticks.GetComponent<BothChopstickBehaviour>().CurrentLength;
+                                Mask.TargetY -= (float)_lastLength;
+                            } else {
+                                float _currentLength = Chopsticks.GetComponent<BothChopstickBehaviour>().CurrentLength;
+                                Mask.TargetY -= _currentLength - _lastLength.Value;
+                                _lastLength = _currentLength;
+                            }
                         }
                     }
                 );
