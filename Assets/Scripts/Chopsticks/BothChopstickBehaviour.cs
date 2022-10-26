@@ -9,6 +9,7 @@ public class BothChopstickBehaviour : MonoBehaviour {
     public float FetchCheckRadius;
     public ChopstickBehaviour LeftChopstick;
     public ChopstickBehaviour RightChopstick;
+    public GameObject Sonar;
     public enum State
     {
         Idle, Fetching
@@ -30,7 +31,7 @@ public class BothChopstickBehaviour : MonoBehaviour {
         Vector3 startPosition = transform.localPosition;
         float _sumScaleY = (LeftChopstick.GetSumScale() + RightChopstick.GetSumScale()) * 0.5f;
         // Debug.Log(_sumScaleY);
-        targetPosition += new Vector2(0, _sumScaleY / 2f);
+        targetPosition += new Vector2(0, _sumScaleY);
         float t = 0;
         GameObject food = null;
         bool taked = false;
@@ -38,7 +39,7 @@ public class BothChopstickBehaviour : MonoBehaviour {
             t += Time.deltaTime;
             float y = FetchPositionCurve.Evaluate(t / FetchDuration) * (targetPosition.y - startPosition.y) + startPosition.y;
             if (y > transform.localPosition.y && !taked) {
-                food = Physics2D.OverlapCircleAll(targetPosition - new Vector2(0, _sumScaleY / 2), FetchCheckRadius)
+                food = Physics2D.OverlapCircleAll(targetPosition - new Vector2(0, _sumScaleY), FetchCheckRadius)
                 .Where(c => c.CompareTag("Food"))
                 .OrderBy(collider => {
                     return Vector2.Distance(collider.transform.position, transform.position);
@@ -60,5 +61,17 @@ public class BothChopstickBehaviour : MonoBehaviour {
         } else {
             RightChopstick.AddPart(partPrefab);
         }
+        UpdateSonarPosition();
+    }
+
+    public void UpdateSonarPosition() {
+        // Debug.Log("pre pos:" + Sonar.transform.position);
+        // Debug.Log(-Mathf.Max(LeftChopstick.GetSumScale(), RightChopstick.GetSumScale()));
+        Sonar.transform.localPosition = new Vector3(
+            Sonar.transform.localPosition.x,
+            -Mathf.Max(LeftChopstick.GetSumScale(), RightChopstick.GetSumScale()),
+            Sonar.transform.localPosition.z
+        );
+        // Debug.Log("pos: " + Sonar.transform.position);
     }
 }

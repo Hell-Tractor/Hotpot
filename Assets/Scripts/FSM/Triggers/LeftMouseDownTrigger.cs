@@ -7,7 +7,11 @@ namespace AI.FSM {
         }
 
         public override bool HandleTrigger(FSMBase fsm) {
-            return Input.GetMouseButtonDown(0);
+            return
+                Input.GetMouseButtonDown(1) &&
+                fsm.gameObject
+                    .GetComponentInParent<BothChopstickBehaviour>()
+                    .CurrentState == BothChopstickBehaviour.State.Idle;
         }
     }
 }
