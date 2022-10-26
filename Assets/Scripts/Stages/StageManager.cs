@@ -5,6 +5,7 @@ public class StageManager : MonoBehaviour {
     public string StageToLoad = "Stage1";
     public GameObject FoodParent;
     public GameObject Chopsticks;
+    public MaskController Mask;
     private StageBase _currentStage = null;
 
     private void Start() {
@@ -25,8 +26,10 @@ public class StageManager : MonoBehaviour {
                 Chopsticks.GetComponent<BothChopstickBehaviour>().Fetch(
                     Camera.main.ScreenToWorldPoint(Input.mousePosition),
                     food => {
-                        if (food != null)
+                        if (food != null) {
                             food.SetActive(false);
+                            Mask.TargetY -= Chopsticks.GetComponent<BothChopstickBehaviour>().CurrentLength;
+                        }
                     },
                     food => {
                         if (food != null) {

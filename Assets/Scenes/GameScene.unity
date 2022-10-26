@@ -155,6 +155,7 @@ MonoBehaviour:
   StageToLoad: StageRandom
   FoodParent: {fileID: 1518895793}
   Chopsticks: {fileID: 759090717}
+  Mask: {fileID: 0}
 --- !u!4 &138362436
 Transform:
   m_ObjectHideFlags: 0
@@ -5545,6 +5546,7 @@ GameObject:
   - component: {fileID: 2109691623}
   - component: {fileID: 2109691622}
   - component: {fileID: 2109691621}
+  - component: {fileID: 2109691627}
   m_Layer: 0
   m_Name: mask
   m_TagString: Untagged
@@ -5820,3 +5822,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20.366314, y: 1.0919218}
   m_EdgeRadius: 0
+--- !u!114 &2109691627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109691618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156b0ba09f828de479fc0756fe98d9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  TargetY: 0

@@ -7,6 +7,7 @@ public class ChopstickBehaviour : MonoBehaviour {
     private GameObject _lastPart = null;
     public GameObject[] InitialParts;
 
+    [ReadOnly, SerializeField]
     private float _sumScaleY;
 
     private void Start() {

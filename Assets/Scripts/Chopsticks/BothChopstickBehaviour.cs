@@ -15,6 +15,12 @@ public class BothChopstickBehaviour : MonoBehaviour {
     }
     public State CurrentState { get; private set; } = BothChopstickBehaviour.State.Idle;
 
+    public float CurrentLength {
+        get {
+            return Mathf.Max(LeftChopstick.CurrentLength, RightChopstick.CurrentLength);
+        }
+    }
+
     public async void Fetch(Vector2 targetPosition, Action<GameObject> onFetch, Action<GameObject> onComplete) {
         if (CurrentState == BothChopstickBehaviour.State.Fetching)
             return;
