@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 4033371749622784812
     second: chopsticks_1
+  - first:
+      213: -7632484722285372250
+    second: chopsticks_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -94,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chopsticks_1
+      name: chopsticks_0
       rect:
         serializedVersion: 2
-        x: 219
-        y: 16
-        width: 130
-        height: 1138
+        x: 174
+        y: 14
+        width: 152
+        height: 963
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -108,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c23ac5f8c3a69f730800000000000000
-      internalID: 4033371749622784812
+      spriteID: 6ac959e6597f31690800000000000000
+      internalID: -7632484722285372250
       vertices: []
       indices: 
       edges: []
