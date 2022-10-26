@@ -155,6 +155,7 @@ MonoBehaviour:
   StageToLoad: StageRandom
   FoodParent: {fileID: 1518895793}
   Chopsticks: {fileID: 759090717}
+  Mask: {fileID: 2109691627}
 --- !u!4 &138362436
 Transform:
   m_ObjectHideFlags: 0
@@ -176,6 +177,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 57174733531174256, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 57174733531174256, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 57174733531174256, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7006865749207744265, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -186,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7006865749207744265, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.56
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7006865749207744265, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
       propertyPath: m_LocalPosition.z
@@ -223,6 +236,18 @@ PrefabInstance:
     - target: {fileID: 7006865749207744270, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
       propertyPath: m_Name
       value: Chopsticks
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755096242203369950, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
+      propertyPath: Degree
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755096242203369950, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
+      propertyPath: SpreadSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755096242203369950, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
+      propertyPath: DurationSeconds
+      value: 4.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ced6a32b92d9a246afc11f8f4580782, type: 3}
@@ -5545,6 +5570,7 @@ GameObject:
   - component: {fileID: 2109691623}
   - component: {fileID: 2109691622}
   - component: {fileID: 2109691621}
+  - component: {fileID: 2109691627}
   m_Layer: 0
   m_Name: mask
   m_TagString: Untagged
@@ -5635,36 +5661,6 @@ CompositeCollider2D:
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
-  - m_Collider: {fileID: 2109691623}
-    m_ColliderPaths:
-    - - X: 101835171
-        Y: -58243972
-      - X: 101835171
-        Y: 59304952
-      - X: 91795600
-        Y: 59304659
-      - X: 91795893
-        Y: -58243972
-  - m_Collider: {fileID: 2109691624}
-    m_ColliderPaths:
-    - - X: 102233051
-        Y: -58774460
-      - X: 102233051
-        Y: -53160220
-      - X: -102233344
-        Y: -53160513
-      - X: -102233051
-        Y: -58774460
-  - m_Collider: {fileID: 2109691625}
-    m_ColliderPaths:
-    - - X: -96039853
-        Y: -59835588
-      - X: -96039853
-        Y: 59835588
-      - X: -101836456
-        Y: 59835295
-      - X: -101836163
-        Y: -59835588
   - m_Collider: {fileID: 2109691626}
     m_ColliderPaths:
     - - X: 101831275
@@ -5675,6 +5671,36 @@ CompositeCollider2D:
         Y: 67792611
       - X: -101831275
         Y: 56873684
+  - m_Collider: {fileID: 2109691625}
+    m_ColliderPaths:
+    - - X: -96039853
+        Y: -59835588
+      - X: -96039853
+        Y: 59835588
+      - X: -101836456
+        Y: 59835295
+      - X: -101836163
+        Y: -59835588
+  - m_Collider: {fileID: 2109691624}
+    m_ColliderPaths:
+    - - X: 102233051
+        Y: -58774460
+      - X: 102233051
+        Y: -53160220
+      - X: -102233344
+        Y: -53160513
+      - X: -102233051
+        Y: -58774460
+  - m_Collider: {fileID: 2109691623}
+    m_ColliderPaths:
+    - - X: 101835171
+        Y: -58243972
+      - X: 101835171
+        Y: 59304952
+      - X: 91795600
+        Y: 59304659
+      - X: 91795893
+        Y: -58243972
   m_CompositePaths:
     m_Paths:
     - - {x: -9.604014, y: -5.9835587}
@@ -5820,3 +5846,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20.366314, y: 1.0919218}
   m_EdgeRadius: 0
+--- !u!114 &2109691627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109691618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156b0ba09f828de479fc0756fe98d9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  TargetY: 0

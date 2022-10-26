@@ -11,11 +11,16 @@ public class FoodBehaviour : MonoBehaviour
     public float SpeedUpdateInterval;
     public float SpeedUpdateDuration;
     public GameObject PartPrefab;
+    [Header("Shadow")]
+    public GameObject Shadow;
+    public AnimationCurve ShadowAlphaCurve;
+    public float ShadowDuration;
     private float _speedUpdateRemainTime;
     private Rigidbody2D _rigidbody2D;
     private SpeedState _currentSpeedState;
     private Vector2 _targetSpeed;
     private Vector2 _speedBeforeUpdate;
+    private float _shadowTimer;
 
     private enum SpeedState {
         Stable,
@@ -29,9 +34,10 @@ public class FoodBehaviour : MonoBehaviour
         _remainTime = DurationSeconds;
         _rigidbody2D.velocity = (new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f))).normalized * Speed;
         _rigidbody2D.angularVelocity = Random.Range(-MaxAngularSpeed, MaxAngularSpeed);
-        Debug.Log(name + " speed: " + _rigidbody2D.velocity);
+        // Debug.Log(name + " speed: " + _rigidbody2D.velocity);
         _speedUpdateRemainTime = SpeedUpdateInterval;
         _currentSpeedState = SpeedState.Stable;
+        _shadowTimer = ShadowDuration;
     }
 
     // Update is called once per frame
@@ -64,9 +70,18 @@ public class FoodBehaviour : MonoBehaviour
                 _rigidbody2D.velocity = Vector2.Lerp(_speedBeforeUpdate, _targetSpeed, t);
             }
         }
+
+        if (_shadowTimer < ShadowDuration) {
+            _shadowTimer += Time.deltaTime;
+            Shadow.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, ShadowAlphaCurve.Evaluate(_shadowTimer / ShadowDuration));
+        } else if (Shadow.activeSelf) {
+            Shadow.SetActive(false);
+        }
     }
 
     public void OnSonarDetected() {
-        
+        _shadowTimer = 0;
+        Shadow.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, ShadowAlphaCurve.Evaluate(0));
+        Shadow.SetActive(true);
     }
 }

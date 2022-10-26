@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2299876674134594545}
   - component: {fileID: 2299876674134594544}
+  - component: {fileID: -4157487697850216474}
   m_Layer: 7
   m_Name: spoon
   m_TagString: Food
@@ -82,3 +83,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4157487697850216474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299876674134594542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77cc6350108d3644db27a7c5efe6095a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -66,6 +66,11 @@ public class FSMBase : MonoBehaviour {
     protected SortedSet<FSMTriggerID> _settledTriggers = new SortedSet<FSMTriggerID>();
     [ReadOnly]
     public string currentStateID;
+    public FSMStateID CurrentState {
+        get {
+            return _currentState.StateID;
+        }
+    }
     public Animator animator;
 }
 

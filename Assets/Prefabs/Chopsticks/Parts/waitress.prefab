@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1501702603032417357}
   - component: {fileID: 1501702603032417358}
+  - component: {fileID: -2960524342125311376}
   m_Layer: 7
   m_Name: waitress
   m_TagString: Food
@@ -82,3 +83,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-2960524342125311376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501702603032417352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77cc6350108d3644db27a7c5efe6095a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
